@@ -1,5 +1,7 @@
 package com.example.fakefy.web.api;
 
+import com.example.fakefy.model.Album;
+import com.example.fakefy.model.Artist;
 import com.example.fakefy.model.Song;
 import com.example.fakefy.service.AlbumService;
 import com.example.fakefy.service.ArtistService;
@@ -45,12 +47,13 @@ public class SongApiController {
     }
     @PostMapping
     public ResponseEntity<Song> addSong(@RequestBody Song song){
+        Album album = this.albumService.getAlbumById(song.getAlbum().getId());
         Song newSong = songService.create(
                 song.getTitle(),
                 song.getFilePath(),
                 song.getLengthSeconds(),
                 song.getAlbum().getId(),
-                song.getArtist().getId()
+                album.getArtist().getId()
         );
         return ResponseEntity.status(HttpStatus.CREATED).body(newSong);
     }

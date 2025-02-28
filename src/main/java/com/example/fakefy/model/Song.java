@@ -45,6 +45,13 @@ public class Song {
         this.artist = artist;
     }
 
+    public Song(Long id, String title, String filePath, int lengthSeconds, Album album) {
+        this.id = id;
+        this.title = title;
+        this.filePath = filePath;
+        this.lengthSeconds = lengthSeconds;
+        this.album = album;
+    }
 
     public Long getId() {
         return id;

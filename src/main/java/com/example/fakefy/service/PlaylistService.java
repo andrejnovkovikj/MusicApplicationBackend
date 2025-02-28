@@ -13,5 +13,5 @@ public interface PlaylistService {
     Playlist delete(Long id);
     void addSongToPlaylist(Long playlistId, Long songId);
     void removeSongFromPlaylist(Long playlistId, Long songId);
-    List<Playlist>getAllPlaylistsForUser(String rtemail);
+    List<Playlist>getAllPlaylistsForUser(String email);
 }

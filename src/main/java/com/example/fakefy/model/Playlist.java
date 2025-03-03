@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @Data
@@ -33,13 +35,13 @@ public class Playlist {
             joinColumns = @JoinColumn(name = "playlist_id"),
             inverseJoinColumns = @JoinColumn(name = "song_id")
     )
-    private List<Song> songs = new ArrayList<>();
+    private Set<Song> songs = new HashSet<>();
 
     public Playlist(String name, String description, String imageUrl) {
         this.name = name;
         this.description = description;
         this.imageUrl = imageUrl;
-        this.songs = new ArrayList<>();
+        this.songs = new HashSet<>();
     }
 
     public Playlist(String name, String description, String imageUrl,MusicUser user) {
@@ -47,7 +49,7 @@ public class Playlist {
         this.description = description;
         this.imageUrl = imageUrl;
         this.user = user;
-        this.songs = new ArrayList<>();
+        this.songs = new HashSet<>();
     }
 
     public Playlist(){}
@@ -68,11 +70,11 @@ public class Playlist {
         this.name = name;
     }
 
-    public List<Song> getSongs() {
+    public Set<Song> getSongs() {
         return songs;
     }
 
-    public void setSongs(List<Song> songs) {
+    public void setSongs(Set<Song> songs) {
         this.songs = songs;
     }
 

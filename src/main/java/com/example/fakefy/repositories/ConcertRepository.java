@@ -1,0 +1,15 @@
+package com.example.fakefy.repositories;
+
+import com.example.fakefy.model.Artist;
+import com.example.fakefy.model.Concert;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface ConcertRepository extends JpaRepository<Concert, Long> {
+    Concert findByName(String name);
+    List<Concert> findAllByLocation(String location);
+    List<Concert> findAllByArtist(Artist artist);
+
+
+}

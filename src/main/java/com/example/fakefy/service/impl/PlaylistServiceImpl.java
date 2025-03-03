@@ -67,7 +67,8 @@ public class PlaylistServiceImpl implements PlaylistService {
     @Override
     public void addSongToPlaylist(Long playlistId, Long songId) {
         Playlist playlist = this.findById(playlistId);
-        Song song = this.songRepository.findById(songId).orElseThrow();
+        Song song = this.songRepository.findById(songId)
+                .orElseThrow(() -> new RuntimeException("Song not found with ID: " + songId));
         playlist.getSongs().add(song);
         this.playlistRepository.save(playlist);
     }
@@ -75,7 +76,8 @@ public class PlaylistServiceImpl implements PlaylistService {
     @Override
     public void removeSongFromPlaylist(Long playlistId, Long songId) {
         Playlist playlist = this.findById(playlistId);
-        Song song = this.songRepository.findById(songId).orElseThrow();
+        Song song = this.songRepository.findById(songId)
+                .orElseThrow(() -> new RuntimeException("Song not found with ID: " + songId));
         playlist.getSongs().remove(song);
         this.playlistRepository.save(playlist);
     }
